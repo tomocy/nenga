@@ -82,7 +82,9 @@ class NengaImageService {
         $path = storage_path('app/public/nenga/').uniqid().'.png';
         $image->save($path);
         $path = str_replace(storage_path('app/public/'), "storage/", $path);
-        $url = rtrim(config('app.url'), '/');
-        return $url.'/'.$path;
+        if (substr($path, 0, 1) !== '/') {
+            $path = '/'.$path;
+        }
+        return $path;
     }
 }

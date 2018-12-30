@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Nenga extends Model
 {
     protected $fillable = [
-        'content', 'author', 'image_url',
+        'content', 'author', 'image_path',
     ];
 }

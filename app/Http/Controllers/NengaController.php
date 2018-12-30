@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Nenga;
 use App\Service\NengaImageService;
 use App\Http\Requests\StoreNengaRequest as Request;
 
@@ -18,6 +19,11 @@ class NengaController extends Controller
     }
 
     public function create(Request $request) {
-        dd($this->nengaImageService->create($request->content, $request->author));
+        $path = $this->nengaImageService->create($request->content, $request->author);
+        $nenga = Nenga::create([
+            'content' => $request->content,
+            'author' => $request->author,
+            'image_path' => $path,
+        ]);
     }
 }
