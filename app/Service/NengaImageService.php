@@ -94,7 +94,7 @@ class NengaImageService {
     }
 
     private function save($name, $image) {
-        $path = storage_path('app/public/nenga/').$name.'.png';
+        $path = storage_path('app/public/').$name.'.png';
         $image->save($path);
         
         return $this->replaceToPublicPath($path);
