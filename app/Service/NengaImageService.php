@@ -36,10 +36,15 @@ class NengaImageService {
 
     private function printAuthor($base, $author) {
         $i = 0;
-        foreach($this->splitJapanese($author) as $letter){
+        $letters = $this->splitJapanese($author);
+        $baseY = 644;
+        if (6 <= count($letters)) {
+            $baseY = 644 - (25 * (count($letters) - 5));
+        }
+        foreach($letters as $letter){
             $letter = $this->convertToBestLetterForVertical($letter);
             $x = 41;
-            $y = 644 + (38 * $i);
+            $y = $baseY + (38 * $i);
             $base->text($letter, $x, $y, function($font) {
                 $font->file(public_path('font/HiraginoW6.ttc'));
                 $font->size(25);
