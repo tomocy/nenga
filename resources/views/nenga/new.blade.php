@@ -1,0 +1,69 @@
+@extends('layouts.master')
+
+@section('content')
+<div id="nenga">
+    <div class="nenga-container">
+        <div class="nenga-image-container">
+            <img src="{{ asset('img/nenga.png') }}" alt="" class="nenga-image">
+        </div>
+        <div class="sp-only">
+            <div class="nenga-create-button-container">
+                <button id="nenga-create-button" class="btn btn-nenga">作成</button>
+            </div>
+        </div>
+        <div class="pc-only nenga-form-container">
+            <form action="{{ route('nenga.create') }}" method="POST" class="nenga-form">
+                <div class="form-group">
+                    <label for="content-input" class="form-label">謝辞・祈り・お願い</label>
+                    <textarea name="content" rows="10" id="content-input" class="form-control" placeholder="本年もどうぞよろしくお願い申し上げます"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="author-input" class="form-label">差出人</label>
+                    <input type="text" name="author" id="author" class="form-control" placeholder="年賀太郎">
+                </div>
+                <div>
+                    <button class="btn btn-nenga">作成</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="nenga-form-modal-container" class="d-none nenga-form-modal-container">
+        <div class="nenga-form-modal">
+            <div class="nenga-form-modal-close-button-container">
+                <button><i id="nenga-form-modal-close-button" class="nenga-form-modal-close-button fa fa-times"></i></button>
+            </div>
+            <div class="nenga-form-modal-form-container">
+                <form action="{{ route('nenga.create') }}" method="POST" class="nenga-form">
+                    <div class="form-group">
+                        <label for="content-input" class="form-label">謝辞・祈り・お願い</label>
+                        <textarea name="content" rows="10" id="content-input" class="form-control" placeholder="本年もどうぞよろしくお願い申し上げます"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="author-input" class="form-label">差出人</label>
+                        <input type="text" name="author" id="author" class="form-control" placeholder="年賀太郎">
+                    </div>
+                    <div>
+                        <button class="btn btn-nenga">作成</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('js')
+<script>
+    $(function() {
+        (function() {
+            var $modalContainer = $('#nenga-form-modal-container')
+            $('#nenga-create-button').click(function() {
+                $modalContainer.removeClass('d-none').addClass('d-block')
+            })
+            $('#nenga-form-modal-close-button').click(function() {
+                $modalContainer.removeClass('d-block').addClass('d-none')
+            })
+        }) ();
+    })
+</script>
+@endsection

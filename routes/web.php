@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/happies/new', 'NengaController@new')->name('nenga.new');
+Route::post('/happies', 'NengaController@create')->name('nenga.create');
