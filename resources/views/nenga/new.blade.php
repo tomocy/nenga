@@ -4,7 +4,7 @@
 <div id="nenga">
     <div class="nenga-container">
         <div class="nenga-image-container">
-            <img src="{{ asset('img/nenga.png') }}" alt="" class="nenga-image">
+            <img src="{{ asset('img/nenga_example.png') }}" alt="" class="nenga-image">
         </div>
         <div class="sp-only">
             <div class="nenga-create-button-container">
