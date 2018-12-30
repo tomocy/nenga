@@ -18,6 +18,6 @@ class NengaController extends Controller
     }
 
     public function create(Request $request) {
-        return $this->nengaImageService->create($request->content, $request->author)->response();
+        dd($this->nengaImageService->create($request->content, $request->author));
     }
 }

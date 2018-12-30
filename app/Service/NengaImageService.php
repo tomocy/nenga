@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use Image;
+use Storage;
 
 class NengaImageService {
     public function create($content, $author) {
@@ -10,15 +11,25 @@ class NengaImageService {
         $base = $this->printContent($base, $content);
         $base = $this->printAuthor($base, $author);
         
-        return $base;
+        return $this->saveImage($base);        
     }
 
     private function printContent($base, $content) {
         $i = 0;
         $j = 0;
-        foreach($this->splitJapanese($content) as $letter){
+        $letters = $this->splitJapanese($content);
+        $count = count($letters);
+        $lamda = $count/10;
+        if ($count === 10 || $count === 20 || $count === 30 || $count === 40 || $count === 50) {
+            $lamda--;
+        }
+        $baseX = 332;
+        if (2 <= $lamda) {
+            $baseX += (20 * ($lamda - 1));
+        }
+        foreach($letters as $letter){
             $letter = $this->convertToBestLetterForVertical($letter);
-            $x = 332 - (43 * $i);
+            $x = $baseX - (43 * $i);
             $y = 161 + (38 * $j);
             $base->text($letter, $x, $y, function($font) {
                 $font->file(public_path('font/HiraginoW6.ttc'));
@@ -65,5 +76,13 @@ class NengaImageService {
         }
 
         return $letter;
+    }
+
+    private function saveImage($image) {
+        $path = storage_path('app/public/nenga/').uniqid().'.png';
+        $image->save($path);
+        $path = str_replace(storage_path('app/public/'), "storage/", $path);
+        $url = rtrim(config('app.url'), '/');
+        return $url.'/'.$path;
     }
 }
