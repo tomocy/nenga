@@ -2,19 +2,23 @@
 
 namespace App\Service;
 
+use App\NengaImagePath;
 use Image;
 use Storage;
 
 class NengaImageService {
     public function create($content, $author) {
         $image = $this->make($content, $author);
-        
-        return $this->saveImage($image);        
+        $name = uniqid();
+        return new NengaimagePath(
+            $this->save($name, $image),
+            $this->save("ogp_{$name}", $this->resizeForOGP($image))
+        );
     }
 
-    public function createForOGP($content, $author) {
-        $image = $this->make($content, $author);
-        $image->resizeCanvas(1200, 630, 'center');
+    public function resizeForOGP($image) {
+        $image->resizeCanvas(1200, 630, 'center', true);
+        
         return $image;
     }
 
@@ -89,9 +93,14 @@ class NengaImageService {
         return $letter;
     }
 
-    private function saveImage($image) {
-        $path = storage_path('app/public/nenga/').uniqid().'.png';
+    private function save($name, $image) {
+        $path = storage_path('app/public/nenga/').$name.'.png';
         $image->save($path);
+        
+        return $this->replaceToPublicPath($path);
+    }
+
+    private function replaceToPublicPath($path) {
         $path = str_replace(storage_path('app/public/'), "storage/", $path);
         if (substr($path, 0, 1) !== '/') {
             $path = '/'.$path;

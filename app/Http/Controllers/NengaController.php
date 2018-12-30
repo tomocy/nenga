@@ -19,12 +19,12 @@ class NengaController extends Controller
     }
 
     public function create(Request $request) {
-        dd($this->nengaImageService->createForOGP($request->content, $request->author)->response());
         $path = $this->nengaImageService->create($request->content, $request->author);
         $nenga = Nenga::create([
             'content' => $request->content,
             'author' => $request->author,
-            'image_path' => $path,
+            'image_path' => $path->normal,
+            'ogp_image_path' => $path->ogp,
         ]);
 
         return redirect()->route('nenga.show', $nenga->id);

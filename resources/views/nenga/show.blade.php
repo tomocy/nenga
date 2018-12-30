@@ -3,7 +3,7 @@
 @section('ogp')
 <meta property="og:url" content="{{ url()->current() }}" /> 
 <meta property="og:title" content="Nenga" /> 
-<meta property="og:image" content="{{ asset($nenga->image_path) }}" /> 
+<meta property="og:image" content="{{ asset($nenga->ogp_image_path) }}" /> 
 <meta property="og:description" content="年賀状をWebから送ろう!" />
 @endsection
 
