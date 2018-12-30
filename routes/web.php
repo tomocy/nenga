@@ -13,3 +13,4 @@
 
 Route::get('/happies/new', 'NengaController@new')->name('nenga.new');
 Route::post('/happies', 'NengaController@create')->name('nenga.create');
+Route::get('/happies/{nenga}', 'NengaController@show')->name('nenga.show');

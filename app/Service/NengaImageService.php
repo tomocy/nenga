@@ -7,11 +7,22 @@ use Storage;
 
 class NengaImageService {
     public function create($content, $author) {
+        $image = $this->make($content, $author);
+        
+        return $this->saveImage($image);        
+    }
+
+    public function createForOGP($content, $author) {
+        $image = $this->make($content, $author);
+        $image->resizeCanvas(1200, 630, 'center');
+        return $image;
+    }
+
+    private function make($content, $author) {
         $base = Image::make(asset('img/nenga.png'));
         $base = $this->printContent($base, $content);
         $base = $this->printAuthor($base, $author);
-        
-        return $this->saveImage($base);        
+        return $base;
     }
 
     private function printContent($base, $content) {
