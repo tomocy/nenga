@@ -12,19 +12,7 @@
             </div>
         </div>
         <div class="pc-only nenga-form-container">
-            <form action="{{ route('nenga.create') }}" method="POST" class="nenga-form">
-                <div class="form-group">
-                    <label for="content-input" class="form-label">謝辞・祈り・お願い</label>
-                    <textarea name="content" rows="10" id="content-input" class="form-control" placeholder="本年もどうぞよろしくお願い申し上げます"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="author-input" class="form-label">差出人</label>
-                    <input type="text" name="author" id="author" class="form-control" placeholder="年賀太郎">
-                </div>
-                <div>
-                    <button class="btn btn-nenga">作成</button>
-                </div>
-            </form>
+            @include('nenga.form')
         </div>
     </div>
     <div id="nenga-form-modal-container" class="d-none nenga-form-modal-container">
@@ -33,19 +21,7 @@
                 <button><i id="nenga-form-modal-close-button" class="nenga-form-modal-close-button fa fa-times"></i></button>
             </div>
             <div class="nenga-form-modal-form-container">
-                <form action="{{ route('nenga.create') }}" method="POST" class="nenga-form">
-                    <div class="form-group">
-                        <label for="content-input" class="form-label">謝辞・祈り・お願い</label>
-                        <textarea name="content" rows="10" id="content-input" class="form-control" placeholder="本年もどうぞよろしくお願い申し上げます"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="author-input" class="form-label">差出人</label>
-                        <input type="text" name="author" id="author" class="form-control" placeholder="年賀太郎">
-                    </div>
-                    <div>
-                        <button class="btn btn-nenga">作成</button>
-                    </div>
-                </form>
+                @include('nenga.form')
             </div>
         </div>
     </div>
