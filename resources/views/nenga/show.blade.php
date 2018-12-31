@@ -6,7 +6,7 @@
 <meta property="og:image" content="{{ $imageOGPURL }}" /> 
 <meta property="og:description" content="年賀状をWebから送ろう!" />
 <meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta property="fb:app_id" content="285636882311524" />
 @endsection
 
