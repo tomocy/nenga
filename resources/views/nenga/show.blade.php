@@ -2,7 +2,7 @@
 
 @section('ogp')
 <meta property="og:url" content="{{ url()->current() }}" /> 
-<meta property="og:title" content="nenen" /> 
+<meta property="og:title" content="nennen" /> 
 <meta property="og:image" content="{{ $imageOGPURL }}" /> 
 <meta property="og:description" content="年賀状をWebから送ろう!" />
 @endsection
