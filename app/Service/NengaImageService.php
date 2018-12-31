@@ -73,7 +73,7 @@ class NengaImageService {
             $x = 41;
             $y = $baseY + (38 * $i);
             $base->text($letter, $x, $y, function($font) {
-                $font->file(public_path('font/HiraginoW6.ttc'));
+                $font->file(public_path('font/Futura.ttf'));
                 $font->size(25);
             });
             $i++;
