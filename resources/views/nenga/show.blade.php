@@ -21,7 +21,7 @@
         <div class="share-button-list-container">
             <ul>
                 <li class="d-inline-block">
-                    <a href="http://twitter.com/share?url={{ url()->current() }}" target="_blank"><i class="share-button share-button-twitter fab fa-twitter"></i></a>
+                    <a href="http://twitter.com/share?url={{ url()->current() }}&hashtags=あけましておめでとうございます,nennen&related=_tomocy" target="_blank"><i class="share-button share-button-twitter fab fa-twitter"></i></a>
                 </li>
                 <li class="d-inline-block">
                     <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" target="_blank"><i class="share-button share-button-facebook fab fa-facebook"></i></a>
