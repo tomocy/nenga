@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Nenga;
 use App\Service\NengaImageService;
 use App\Http\Requests\StoreNengaRequest as Request;
+use Storage;
 
 class NengaController extends Controller
 {
@@ -31,6 +32,10 @@ class NengaController extends Controller
     }
 
     public function show(Nenga $nenga) {
-        return view('nenga.show', compact('nenga'));
+        return view('nenga.show', [
+            'nenga' => $nenga,
+            'imageURL' => Storage::disk('s3')->url($nenga->image_path),
+            'imageOGPURL' => Storage::disk('s3')->url($nenga->ogp_image_path),
+        ]);
     }
 }

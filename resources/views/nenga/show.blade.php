@@ -3,7 +3,7 @@
 @section('ogp')
 <meta property="og:url" content="{{ url()->current() }}" /> 
 <meta property="og:title" content="nenen" /> 
-<meta property="og:image" content="{{ asset($nenga->ogp_image_path) }}" /> 
+<meta property="og:image" content="{{ $imageOGPURL }}" /> 
 <meta property="og:description" content="年賀状をWebから送ろう!" />
 @endsection
 
@@ -11,7 +11,7 @@
 <div id="nenga-show">
     <div class="container">
         <div class="image-container">
-            <img src="{{ asset($nenga->image_path) }}" alt="" class="image">
+            <img src="{{ $imageURL }}" alt="" class="image">
         </div>
         <div class="share-button-list-container">
             <ul>

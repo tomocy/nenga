@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\NengaImagePath;
+use Illuminate\Http\File;
 use Image;
 use Storage;
 
@@ -94,16 +95,19 @@ class NengaImageService {
     }
 
     private function save($name, $image) {
-        $path = storage_path('app/public/').$name.'.png';
+        $dir = 'nengas';
+        $name = "{$name}.png";
+        $path = storage_path('app/public/')."{$dir}/{$name}";
         $image->save($path);
+        Storage::disk('s3')->putFileAs($dir, new File($path), $name, 'public');
         
         return $this->replaceToPublicPath($path);
     }
 
     private function replaceToPublicPath($path) {
-        $path = str_replace(storage_path('app/public/'), "storage/", $path);
-        if (substr($path, 0, 1) !== '/') {
-            $path = '/'.$path;
+        $path = str_replace(storage_path('app/public/'), "", $path);
+        if (substr($path, 0, 1) === '/') {
+            $path = ltrim($path, "/");
         }
         return $path;
     }
