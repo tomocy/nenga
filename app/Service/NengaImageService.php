@@ -48,7 +48,7 @@ class NengaImageService {
             $x = $baseX - (43 * $i);
             $y = 161 + (38 * $j);
             $base->text($letter, $x, $y, function($font) {
-                $font->file(public_path('font/HiraginoW6.ttc'));
+                $font->file(public_path('font/GenShinGothic-Bold.ttf'));
                 $font->size(25);
             });
             $j++;
