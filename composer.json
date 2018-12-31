@@ -54,6 +54,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "compile": [
+            "chmod 755 public/font/HiraginoW6.ttc"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
